@@ -7,7 +7,7 @@ import { Browser, Page, expect, test } from "@playwright/test";
     test.describe("Static Table Practice on Playwright Sandbox", () => {
         test("Static Table Practice", async ({ page }) => {
             await test.step("Loads Practice Page", async () => {
-                await page.goto("https://thefreerangetester.github.io/sandbox-automation-testing/");
+                await page.goto("");
             })
             await test.step("Static Table", async () => {
                 const tableNames = await page.$$eval("h2:has-text('Tabla estática') + table tbody tr td:nth-child(2)", elements => elements.map(element => element.textContent))
@@ -27,7 +27,7 @@ import { Browser, Page, expect, test } from "@playwright/test";
     test.describe("Dynamic Table Practice on Playwright Sandbox", () => {
         test("Dynamic Table Practice", async ({ page }) => {
             await test.step("Loads Practice Page", async () => {
-                await page.goto("https://thefreerangetester.github.io/sandbox-automation-testing/");
+                await page.goto("");
             })
             await test.step("Dynamic Table", async () => {
                 const table = page.locator("h2:has-text('Tabla dinámica')");
@@ -59,7 +59,7 @@ import { Browser, Page, expect, test } from "@playwright/test";
         test.only("Soft Assertions Practice", async ({ page }) => {
             test.info().annotations.push({ type: "issue", description: "Revisar los nombres de los elementos, hay algunos typos" });
             await test.step("Loads Practice Page", async () => {
-                await page.goto("https://thefreerangetester.github.io/sandbox-automation-testing/");
+                await page.goto("");
             })
 
             await test.step("Soft Assertions", async ({ }) => {

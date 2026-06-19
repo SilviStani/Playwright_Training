@@ -7,7 +7,7 @@ import { Browser, Page, expect, test } from "@playwright/test";
     test.describe("Sandbox tests practice page", () => {
         test("Dropdown Practice", async ({ page }) => {
             await test.step("Loads the practice page", async () => {
-                await page.goto("https://thefreerangetester.github.io/sandbox-automation-testing/");
+                await page.goto("");
             })
 
             await test.step("Sandbox page loads", async () => {

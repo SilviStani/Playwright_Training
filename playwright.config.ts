@@ -28,7 +28,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://thefreerangetester.github.io/sandbox-automation-testing/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -36,13 +36,25 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
+  /* Command to run tests for the Desktop project: npx playwright test --project=Desktop */
   projects: [
     {
-      name: 'chromium',
-      use: { 
+      name: 'Desktop',
+      use: {
         ...devices['Desktop Chrome'],
         headless: true,
       },
+    },
+    {
+      name: 'Iphone',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPhone 12'] },
+    },
+
+    {
+      name: 'IPad',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPad (gen 7)'] },
     },
 
     // {
