@@ -4,9 +4,9 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -40,6 +40,7 @@ export default defineConfig({
   projects: [
     {
       name: 'Desktop',
+      testIgnore: 'APITESTS/**/*',
       use: {
         ...devices['Desktop Chrome'],
         headless: true,
@@ -47,20 +48,25 @@ export default defineConfig({
     },
     {
       name: 'Iphone',
-      testMatch: "/*.spec.ts",
       use: { ...devices['iPhone 12'] },
     },
 
     {
       name: 'IPad',
-      testMatch: "/*.spec.ts",
       use: { ...devices['iPad (gen 7)'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'API Testing', // project name
+      testMatch: "APITESTS/**/*", // test files to run in this project
+      use: {
+        baseURL: "https://api.github.com", // override baseURL for API testing
+        extraHTTPHeaders: {
+          'Accept': 'application/vnd.github.v3+json', // GitHub API versioning
+          'Authorization': `token ${process.env.GITHUB_TOKEN}` // use a token from environment variables for authentication
+        }
+      } 
+    },
 
     // {
     //   name: 'webkit',

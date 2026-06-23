@@ -6,5 +6,8 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 
+# Environment variables (never commit tokens)
+.env
+
 # Personal research
 tests/myResearchPractice.spec.ts
